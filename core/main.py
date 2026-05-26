@@ -14,9 +14,19 @@ async def create_upload_file(file: UploadFile = File(...)):
     
     content = await file.read()
     file_path = os.path.join(UPLOAD_DIR, file.filename)
+    if os.path.exists(file_path):
+        return {"message": "File already exists."}
+    
     with open(file_path, "wb") as f:
-        f.write(content)
-        
+        try:
+            f.write(content)
+            return {"message": "File uploaded successfully.",
+                     "filename": file.filename,
+                     "file_path": file_path}
+        except Exception as e:
+            return {"message": "Error occurred while saving file.",
+                    "error": str(e)}
+    
     task = process_pdf_task.delay(file_path)
     
     return {
