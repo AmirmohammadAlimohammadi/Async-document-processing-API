@@ -3,3 +3,15 @@ uvicorn
 redis
 celery
 python-multipart
+sqlmodel
+psycopg2-binary
+pydantic
+sqlalchemy
+pydantic[email]
+passlib
+bcrypt
+langchain
+chromadb
+langchain-community
+google-genai
+pypdf
