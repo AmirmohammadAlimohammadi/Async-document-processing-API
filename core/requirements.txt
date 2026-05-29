@@ -15,3 +15,4 @@ chromadb
 langchain-community
 google-genai
 pypdf
+langchain-google-genai
